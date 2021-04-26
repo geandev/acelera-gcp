@@ -1,13 +1,13 @@
-<form>
+<form [formGroup]="surveyFrom" (ngSubmit)="sendSurvey()">
   <h1> Acelera - Programmers :) </h1>
 
   <fieldset>
 
     <label for="name">Idade:</label>
-    <input type="number" id="idade" name="idade">
+    <input formControlName="idade" type="number" id="idade" name="idade">
 
     <label for="email">Estado:</label>
-    <select id="estado" name="estado">
+    <select formControlName="estado" id="estado" name="estado">
       <option value="AC">Acre</option>
       <option value="AL">Alagoas</option>
       <option value="AP">Amapá</option>
@@ -39,7 +39,7 @@
     </select>
 
     <label for="areaAtuacao">Area de atuação:</label>
-    <select id="areaAtuacao" name="areaAtuacao">
+    <select formControlName="areaAtuacao" id="areaAtuacao" name="areaAtuacao">
       <option value="Desenvolvimento">Desenvolvimento</option>
       <option value="QA">QA</option>
       <option value="Redes">Redes</option>
@@ -51,42 +51,32 @@
       <option value="Gestao">Gestão</option>
     </select>
 
-    <label>Trabalhou Azure:</label>
-    <input type="radio" value="true" name="trabalhouZure">
-    <label for="trabalhouZure" class="light">Sim</label>
+    <label>Trabalhou Com Azure:</label>
+    <input formControlName="trabalhouAzure" type="radio" [value]="true" name="trabalhouAzure">
+    <label for="trabalhouAzure" class="light">Sim</label>
     <br />
-    <input type="radio" value="false" name="trabalhouZure">
-    <label for="trabalhouZure" class="light">Não</label>
+    <input formControlName="trabalhouAzure" type="radio" [value]="false" name="trabalhouAzure">
+    <label for="trabalhouAzure" class="light">Não</label>
     <br />
     <hr />
-    <label>Trabalhou AWS:</label>
-    <input type="radio" value="true" name="trabalhouAws">
+    <label>Trabalhou Com AWS:</label>
+    <input formControlName="trabalhouAws" type="radio" [value]="true" name="trabalhouAws">
     <label for="trabalhouAws" class="light">Sim</label>
     <br />
-    <input type="radio" value="false" name="trabalhouAws">
+    <input formControlName="trabalhouAws" type="radio" [value]="false" name="trabalhouAws">
     <label for="trabalhouAws" class="light">Não</label>
     <br />
     <hr />
-    <label>Trabalhou Google Cloud:</label>
-    <input type="radio" value="true" name="trabalhouGoogleCloud">
+    <label>Trabalhou Com Google Cloud:</label>
+    <input formControlName="trabalhouGoogleCloud" type="radio" [value]="true" name="trabalhouGoogleCloud">
     <label for="trabalhouGoogleCloud" class="light">Sim</label>
     <br />
-    <input type="radio" value="false" name="trabalhouGoogleCloud">
+    <input formControlName="trabalhouGoogleCloud" type="radio" [value]="false" name="trabalhouGoogleCloud">
     <label for="trabalhouGoogleCloud" class="light">Não</label>
-    <hr />
     <br />
     <label for="nivelInteresseGoogleCloud">Nivel de interesse em Google Cloud:</label>
-    <select id="nivelInteresseGoogleCloud" name="nivelInteresseGoogleCloud">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
+    <select formControlName="nivelInteresseGoogleCloud" id="nivelInteresseGoogleCloud" name="nivelInteresseGoogleCloud">
+      <option *ngFor="let nivel of nivesInteresse" [value]="nivel"> {{nivel}}</option>
     </select>
   </fieldset>
   <button type="submit">Enviar</button>

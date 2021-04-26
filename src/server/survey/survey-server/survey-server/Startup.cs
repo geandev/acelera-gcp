@@ -24,6 +24,18 @@ namespace survey_server
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                        .WithOrigins("https://acelera-gcp-frontend-c4ptcpyniq-uc.a.run.app", "http://localhost:4200");
+                    });
+            }); 
             services.AddControllers();
 
             services.AddDbContext<SurveyContext>(x =>
@@ -42,6 +54,7 @@ namespace survey_server
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
