@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   surveyFrom: FormGroup
   nivesInteresse = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -33,7 +33,11 @@ export class AppComponent {
       return alert('Preencha todos os campos por faovr')
 
     this.httpClient
-      .post('survey', this.surveyFrom.value)
+      .post('survey',
+        {
+          ...this.surveyFrom.value,
+          nivelInteresseGoogleCloud: parseInt(this.surveyFrom.value.nivelInteresseGoogleCloud)
+        })
       .subscribe(() => {
         alert('Obrigado por participar')
         window.location.href = 'https://www.programmers.com.br/';

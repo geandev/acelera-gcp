@@ -1,83 +1,103 @@
-<form [formGroup]="surveyFrom" (ngSubmit)="sendSurvey()">
-  <h1> Acelera - Programmers :) </h1>
+<section class="form-container">
+  <div class="form-logo">
+    <img src="/assets/imgs/acelera-logo-azul.png">
+  </div>
+  <form [formGroup]="surveyFrom" (ngSubmit)="sendSurvey()">
+    <fieldset class="personal">
+      <legend>Pessoais</legend>
+      <section class="personal-section">
+        <label for="name">Idade:</label>
+        <input formControlName="idade" type="number" id="idade" name="idade">
+      </section>
+      <section class="personal-section">
+        <label for="email">Estado:</label>
+        <select formControlName="estado" id="estado" name="estado">
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option selected value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+          <option value="EX">Estrangeiro</option>
+        </select>
+      </section>
 
-  <fieldset>
+      <section class="personal-section">
+        <label for="areaAtuacao">Area de atuação:</label>
+        <select formControlName="areaAtuacao" id="areaAtuacao" name="areaAtuacao">
+          <option value="Desenvolvimento">Desenvolvimento</option>
+          <option value="QA">QA</option>
+          <option value="Redes">Redes</option>
+          <option value="BA">BA</option>
+          <option value="Scrum Master">Scrum Master</option>
+          <option value="Marketing">Marketing</option>
+          <option value="RH">RH</option>
+          <option value="Vendas">Vendas</option>
+          <option value="Gestao">Gestão</option>
+        </select>
+      </section>
+    </fieldset>
+    <fieldset class="experiences">
+      <legend>Experiências</legend>
+      <section class="experience-section">
+        <label>Você já trabalhou com Azure (Microsoft cloud platform):</label>
+        <input formControlName="trabalhouAzure" type="radio" [value]="true" name="trabalhouAzure">
+        <label for="trabalhouAzure" class="light">Sim</label>
+        <br />
+        <input formControlName="trabalhouAzure" type="radio" [value]="false" name="trabalhouAzure">
+        <label for="trabalhouAzure" class="light">Não</label>
+      </section>
 
-    <label for="name">Idade:</label>
-    <input formControlName="idade" type="number" id="idade" name="idade">
+      <section class="experience-section">
+        <label>Você já trabalhou com AWS (Amazon):</label>
+        <input formControlName="trabalhouAws" type="radio" [value]="true" name="trabalhouAws">
+        <label for="trabalhouAws" class="light">Sim</label>
+        <br />
+        <input formControlName="trabalhouAws" type="radio" [value]="false" name="trabalhouAws">
+        <label for="trabalhouAws" class="light">Não</label>
+      </section>
 
-    <label for="email">Estado:</label>
-    <select formControlName="estado" id="estado" name="estado">
-      <option value="AC">Acre</option>
-      <option value="AL">Alagoas</option>
-      <option value="AP">Amapá</option>
-      <option value="AM">Amazonas</option>
-      <option value="BA">Bahia</option>
-      <option value="CE">Ceará</option>
-      <option value="DF">Distrito Federal</option>
-      <option value="ES">Espírito Santo</option>
-      <option value="GO">Goiás</option>
-      <option value="MA">Maranhão</option>
-      <option value="MT">Mato Grosso</option>
-      <option value="MS">Mato Grosso do Sul</option>
-      <option value="MG">Minas Gerais</option>
-      <option value="PA">Pará</option>
-      <option value="PB">Paraíba</option>
-      <option value="PR">Paraná</option>
-      <option value="PE">Pernambuco</option>
-      <option value="PI">Piauí</option>
-      <option value="RJ">Rio de Janeiro</option>
-      <option value="RN">Rio Grande do Norte</option>
-      <option value="RS">Rio Grande do Sul</option>
-      <option value="RO">Rondônia</option>
-      <option value="RR">Roraima</option>
-      <option value="SC">Santa Catarina</option>
-      <option selected value="SP">São Paulo</option>
-      <option value="SE">Sergipe</option>
-      <option value="TO">Tocantins</option>
-      <option value="EX">Estrangeiro</option>
-    </select>
+      <section class="experience-section">
+        <label>Você já trabalhou com GCP (Google cloud platform):</label>
+        <input formControlName="trabalhouGoogleCloud" type="radio" [value]="true" name="trabalhouGoogleCloud">
+        <label for="trabalhouGoogleCloud" class="light">Sim</label>
+        <br />
+        <input formControlName="trabalhouGoogleCloud" type="radio" [value]="false" name="trabalhouGoogleCloud">
+        <label for="trabalhouGoogleCloud" class="light">Não</label>
+      </section>
 
-    <label for="areaAtuacao">Area de atuação:</label>
-    <select formControlName="areaAtuacao" id="areaAtuacao" name="areaAtuacao">
-      <option value="Desenvolvimento">Desenvolvimento</option>
-      <option value="QA">QA</option>
-      <option value="Redes">Redes</option>
-      <option value="BA">BA</option>
-      <option value="Scrum Master">Scrum Master</option>
-      <option value="Marketing">Marketing</option>
-      <option value="RH">RH</option>
-      <option value="Vendas">Vendas</option>
-      <option value="Gestao">Gestão</option>
-    </select>
 
-    <label>Trabalhou Com Azure:</label>
-    <input formControlName="trabalhouAzure" type="radio" [value]="true" name="trabalhouAzure">
-    <label for="trabalhouAzure" class="light">Sim</label>
-    <br />
-    <input formControlName="trabalhouAzure" type="radio" [value]="false" name="trabalhouAzure">
-    <label for="trabalhouAzure" class="light">Não</label>
-    <br />
-    <hr />
-    <label>Trabalhou Com AWS:</label>
-    <input formControlName="trabalhouAws" type="radio" [value]="true" name="trabalhouAws">
-    <label for="trabalhouAws" class="light">Sim</label>
-    <br />
-    <input formControlName="trabalhouAws" type="radio" [value]="false" name="trabalhouAws">
-    <label for="trabalhouAws" class="light">Não</label>
-    <br />
-    <hr />
-    <label>Trabalhou Com Google Cloud:</label>
-    <input formControlName="trabalhouGoogleCloud" type="radio" [value]="true" name="trabalhouGoogleCloud">
-    <label for="trabalhouGoogleCloud" class="light">Sim</label>
-    <br />
-    <input formControlName="trabalhouGoogleCloud" type="radio" [value]="false" name="trabalhouGoogleCloud">
-    <label for="trabalhouGoogleCloud" class="light">Não</label>
-    <br />
-    <label for="nivelInteresseGoogleCloud">Nivel de interesse em Google Cloud:</label>
-    <select formControlName="nivelInteresseGoogleCloud" id="nivelInteresseGoogleCloud" name="nivelInteresseGoogleCloud">
-      <option *ngFor="let nivel of nivesInteresse" [value]="nivel"> {{nivel}}</option>
-    </select>
-  </fieldset>
-  <button type="submit">Enviar</button>
-</form>
+    </fieldset>
+    <fieldset class="interessings">
+      <legend>Nivel de interesse em Google Cloud:</legend>
+      <section *ngFor="let nivel of nivesInteresse" class="interessing-section">
+        <label for="trabalhouGoogleCloud" class="light"> {{nivel}}</label>
+        <input formControlName="nivelInteresseGoogleCloud" type="radio" [value]="nivel"
+          name="nivelInteresseGoogleCloud">
+      </section>
+    </fieldset>
+    <button type="submit">Enviar</button>
+  </form>
+
+</section>
