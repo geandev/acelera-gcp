@@ -1,7 +1,12 @@
 <section class="form-container">
-  <div class="form-logo">
-    <img src="/assets/imgs/acelera-logo-azul.png">
-  </div>
+  <section class="form-header">
+    <div class="form-logo">
+      <img src="/assets/imgs/acelera-logo-azul.png">
+    </div>
+    <div class="form-title">
+      <h1>Questionário</h1>
+    </div>
+  </section>
   <form [formGroup]="surveyFrom" (ngSubmit)="sendSurvey()">
     <fieldset class="personal">
       <legend>Pessoais</legend>
@@ -12,6 +17,7 @@
       <section class="personal-section">
         <label for="email">Estado:</label>
         <select formControlName="estado" id="estado" name="estado">
+
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
