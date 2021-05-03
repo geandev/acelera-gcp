@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.surveyFrom = this.formBuilder.group({
-      idade: [],
+      idade: [18],
       estado: ['SP'],
       areaAtuacao: ['Desenvolvimento'],
       trabalhouAzure: [false],
@@ -38,13 +39,10 @@ export class AppComponent implements OnInit {
           ...this.surveyFrom.value,
           nivelInteresseGoogleCloud: parseInt(this.surveyFrom.value.nivelInteresseGoogleCloud)
         })
-      .subscribe(() => {
-        alert('Obrigado por participar')
-        window.location.href = 'https://www.programmers.com.br/';
-        return
-      })
-
-
+      .subscribe(
+        () => { alert('Obrigado, informacoes enviadas com sucesso') },
+        () => { alert('Ops, Verifique os campos e  tente novamente') }
+      )
   }
 
 }
